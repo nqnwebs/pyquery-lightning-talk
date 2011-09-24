@@ -5,4 +5,4 @@ PyQuery: (des)trozemos la web
 - PyQuery es una biblioteca que trae la API de selectores y traversing de jQuery
   a Python. 
 
-  * http://pyquery-lightning-talk.github.com
+  * http://nqnwebs.github.com/pyquery-lightning-talk
