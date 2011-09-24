@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="generator" content="rst2slides 0.2.2" /><title></title>
+<link rel="stylesheet" href="ui/styles.css" />
+<link rel="stylesheet" href="ui/pygments_style.css" />
+<link rel="stylesheet" href="ui/user.css" />
+</head>
+<body>
+
+    <header>
+    <nav>
+        <ul>
+            <li><button id="prev-btn" title="Previous slide">Previous Slide</button></li>
+            <li><span id="slide-number"></span>/<span id="slide-total"></span></li>
+            <li><button id="next-btn" title="Next Slide">Next Slide</button></li>
+        </ul>
+    </nav>
+    </header>
+
+<div id='deck'>
+
+
+<section>
+<hgroup>
+    <h1>
+PyQuery: (des)trozemos la web    </h1>
+</hgroup>
+<ul class="simple">
+<li>jquery-like library</li>
+<li>Lo que hace Beautiful Soup</li>
+<li>Scrapping, templates, testing ...</li>
+<li>Genial si ya conoces jquery. Fácil y elegante</li>
+</ul>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyquery</span> <span class="kn">import</span> <span class="n">PyQuery</span> <span class="k">as</span> <span class="n">pq</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="s">&quot;&lt;html&gt;&lt;/html&gt;&quot;</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="s">&#39;http://google.com&#39;</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s">&#39;http://google.com&#39;</span><span class="p">,</span> <span class="n">opener</span><span class="o">=</span><span class="k">lambda</span> <span class="n">url</span><span class="p">:</span> <span class="n">urllib</span><span class="o">...</span> <span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">path_to_html_file</span><span class="p">)</span>
+</pre></div>
+  </section>
+
+<section>
+<hgroup>
+    <h1>
+y entonces?    </h1>
+</hgroup>
+<ul class="simple">
+<li><tt class="docutils literal">d</tt> es como <tt class="docutils literal">$</tt> en jquery</li>
+<li>Ejemplo:</li>
+</ul>
+<img alt="tabla.png" class="align-center" src="tabla.png" />
+  </section>
+
+<section>
+<hgroup>
+    <h1>
+scrapp!    </h1>
+</hgroup>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">pq</span><span class="p">(</span><span class="s">u&quot;http://es.wikipedia.org/wiki/Geografía_de_la_Argentina&quot;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lagos</span> <span class="o">=</span> <span class="n">d</span><span class="p">(</span><span class="s">&quot;:contains(&#39;Lagos de Argentina&#39;)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">parents</span><span class="p">(</span><span class="s">&#39;table tr td a&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lagos</span><span class="p">]</span>
+<span class="p">[</span><span class="s">&#39;Lago Viedma&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Buenos Aires&#39;</span><span class="p">,</span>
+  <span class="s">u&#39;Lago Colhu</span><span class="se">\xe9</span><span class="s"> Huapi&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Nahuel Huapi&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Fagnano&#39;</span><span class="p">,</span>
+  <span class="s">u&#39;Lago San Mart</span><span class="se">\xed</span><span class="s">n&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Cardiel&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Musters&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Strobel&#39;</span><span class="p">,</span>
+  <span class="s">u&#39;Lago Pueyrred</span><span class="se">\xf3</span><span class="s">n&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Huechulaufquen&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Fontana&#39;</span><span class="p">,</span>
+  <span class="s">&#39;Lago Traful&#39;</span><span class="p">]</span>
+</pre></div>
+  </section>
+
+<section>
+<hgroup>
+    <h1>
+Gustó ?    </h1>
+</hgroup>
+<p class="align-center"><a class="reference external" href="http://pypi.python.org/pypi/pyquery">http://pypi.python.org/pypi/pyquery</a></p>
+<p class="align-center"><a class="reference external" href="http://api.jquery.com/">http://api.jquery.com/</a></p>
+  </section>
+</div>
+
+
+        <script src="ui/jquery-1.4.2.min.js"></script>
+        <script src="ui/htmlSlides.js"></script>
+        </body>
+</html>
